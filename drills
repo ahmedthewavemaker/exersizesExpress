@@ -1,0 +1,48 @@
+const express= require('express');
+const morgan = require('morgan');
+
+const app=express();
+app.use(morgan('dev'));
+
+
+drill 1
+
+app.get('/sum', (req,res)=>{
+    const {a, b}= req.query;
+
+    //validation of constants
+    if(!a){
+        return res.status(400).send('a required');
+
+    }
+
+    if(!b){
+        return res.status(400).send('b required')
+    }
+
+    //get their values
+    const aNumber=parseFloat(a);
+    const bNumber=parseFloat(b);
+
+    //validate that they are numbers
+    if(Number.isNaN(aNumber)){
+        return res.status(400).send('a must be a number')
+    }
+
+    if(Number.isNaN(bNumber)){
+        return res.status(400).send('b must be a number')
+    }
+    //if all good in the hood 
+    const c = aNumber+bNumber;
+
+    const finalResponse =`the sum of ${aNumber} and ${bNumber} is ${c}`;
+console.log(finalResponse)
+    res.status(200).send(finalResponse)
+    
+
+
+})
+
+drill 2
+
+drill 3
